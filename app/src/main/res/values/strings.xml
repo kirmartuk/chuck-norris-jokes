@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TestChuck</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_title_1">Jokes</string>
+    <string name="tab_title_2">Web</string>
+    <string name="hash_tag">#</string>
+    <string name="count">count</string>
 </resources>
