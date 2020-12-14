@@ -11,6 +11,15 @@
         android:layout_marginTop="5dp" />
 
     <include
+        android:id="@+id/pgb_container"
+        layout="@layout/progress_bar_chuck_norris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+
+    <include
         android:id="@+id/fab"
         layout="@layout/custom_fab_widget"
         android:layout_width="wrap_content"
