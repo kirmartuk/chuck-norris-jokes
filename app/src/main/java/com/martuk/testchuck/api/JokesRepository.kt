@@ -28,6 +28,7 @@ class JokesRepository(
     suspend fun loadChuckNorrisJokes(count: Int): Flow<LoadResult> {
         return flow {
             try {
+                emit(LoadResult.Loading)
                 val retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
