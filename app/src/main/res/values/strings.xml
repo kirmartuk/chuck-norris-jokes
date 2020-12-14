@@ -4,4 +4,6 @@
     <string name="tab_title_2">Web</string>
     <string name="hash_tag">#</string>
     <string name="count">count</string>
+    <string name="error">something went wrong</string>
+    <string name="not_empty">must not be empty</string>
 </resources>
