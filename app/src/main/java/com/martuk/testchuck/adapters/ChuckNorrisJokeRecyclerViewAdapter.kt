@@ -1,11 +1,14 @@
 package com.martuk.testchuck.adapters
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.martuk.testchuck.R
 import com.martuk.testchuck.entities.ChuckNorrisJoke
+import java.net.URLDecoder
+import java.nio.charset.CharsetDecoder
 
 class ChuckNorrisJokeRecyclerViewAdapter(private val jokes: ArrayList<ChuckNorrisJoke>) :
     RecyclerView.Adapter<ChuckNorrisJokeRecyclerViewAdapter.ViewHolder>() {
@@ -19,7 +22,10 @@ class ChuckNorrisJokeRecyclerViewAdapter(private val jokes: ArrayList<ChuckNorri
         }
 
         fun bind(chuckNorrisJoke: ChuckNorrisJoke) {
-            mJokeTextView?.run { text = chuckNorrisJoke.joke }
+            mJokeTextView?.run {
+                // Should use Html.fromHtml(), because jokes contains special signs
+                text = "${Html.fromHtml(chuckNorrisJoke.joke)}"
+            }
         }
     }
 
