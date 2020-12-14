@@ -10,3 +10,5 @@ Dark Mode             |  Light Mode
 :-------------------------:|:-------------------------:
 ![](https://github.com/kirmartuk/chuck-norris-jokes/blob/main/screenshots/web_dark.png)  |  ![](https://github.com/kirmartuk/chuck-norris-jokes/blob/main/screenshots/web_light.png)
 
+## Incredible + amazing + awesome = chuck norris progress bar
+![](https://github.com/kirmartuk/chuck-norris-jokes/blob/main/screenshots/pgb_chuck_norris.gif)
