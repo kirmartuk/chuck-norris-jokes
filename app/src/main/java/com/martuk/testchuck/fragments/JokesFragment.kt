@@ -1,6 +1,7 @@
 package com.martuk.testchuck.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,12 +55,23 @@ class JokesFragment : Fragment() {
         with(fab) {
             ibtn_load.setOnClickListener {
                 text_layout.error = null
-                if (et_count_of_joke.text.toString().isEmpty()) {
-                    text_layout.error = context.getString(R.string.not_empty)
-                } else {
-                    mJokesViewModel.loadChuckNorrisJokes(et_count_of_joke.text.toString().toInt())
-
+                try {
+                    if (et_count_of_joke.text.toString().isEmpty()) {
+                        text_layout.error = context.getString(R.string.not_empty)
+                    } else {
+                        mJokesViewModel.loadChuckNorrisJokes(
+                            et_count_of_joke.text.toString().toInt()
+                        )
+                    }
+                } catch (exception: NumberFormatException) {
+                    Snackbar.make(
+                        view,
+                        context.getString(R.string.number_is_too_big),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    Log.e("numberformatexception", exception.toString())
                 }
+
             }
         }
     }
