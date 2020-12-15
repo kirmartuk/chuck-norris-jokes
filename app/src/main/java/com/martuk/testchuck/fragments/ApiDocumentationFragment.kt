@@ -16,6 +16,7 @@ class ApiDocumentationFragment : Fragment() {
     companion object {
 
         const val BASE_URL = "http://www.icndb.com/api/"
+        var webViewState: Bundle? = null
 
         fun newInstance(): ApiDocumentationFragment {
             return ApiDocumentationFragment()
@@ -26,7 +27,10 @@ class ApiDocumentationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         wv_api.webViewClient = WebViewClient()
-        wv_api.loadUrl(BASE_URL)
+        when (webViewState != null) {
+            true -> wv_api.restoreState(webViewState)
+            false -> wv_api.loadUrl(BASE_URL)
+        }
     }
 
     override fun onCreateView(
@@ -37,5 +41,9 @@ class ApiDocumentationFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_api_documentation, container, false)
     }
 
-
+    override fun onPause() {
+        super.onPause()
+        webViewState = Bundle()
+        wv_api.saveState(webViewState)
+    }
 }
