@@ -1,4 +1,5 @@
 # Simple app with jokes about Chuck Norris
+[Download apk](https://github.com/kirmartuk/chuck-norris-jokes/raw/main/app/release/app-release.apk)
 
 ## Jokes
 Dark Mode             |  Light Mode
