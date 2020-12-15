@@ -1,6 +1,7 @@
 package com.martuk.testchuck.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,19 +27,6 @@ class ApiDocumentationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         wv_api.webViewClient = WebViewClient()
         wv_api.loadUrl(BASE_URL)
-
-        // support onBackPressed in WebView
-        activity?.onBackPressedDispatcher?.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    when {
-                        wv_api.canGoBack() -> wv_api.goBack()
-                        else ->
-                            activity?.finish()
-                    }
-                }
-            })
     }
 
     override fun onCreateView(
