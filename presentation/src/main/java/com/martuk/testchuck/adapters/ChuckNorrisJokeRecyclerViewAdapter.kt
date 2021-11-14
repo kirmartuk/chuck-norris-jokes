@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kirmartyukl.domain.dto.ChuckNorrisJoke
 import com.martuk.testchuck.R
-import com.martuk.testchuck.entities.ChuckNorrisJoke
-import java.net.URLDecoder
-import java.nio.charset.CharsetDecoder
 
-class ChuckNorrisJokeRecyclerViewAdapter(private val jokes: ArrayList<ChuckNorrisJoke>) :
+class ChuckNorrisJokeRecyclerViewAdapter :
     RecyclerView.Adapter<ChuckNorrisJokeRecyclerViewAdapter.ViewHolder>() {
+
+    var jokes: ArrayList<ChuckNorrisJoke> = arrayListOf()
+
     class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.joke_item, parent, false)) {
 
