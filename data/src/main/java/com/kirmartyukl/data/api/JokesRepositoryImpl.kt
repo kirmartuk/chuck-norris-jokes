@@ -1,42 +1,34 @@
-package com.martuk.testchuck.api
+package com.kirmartyukl.data.api
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.martuk.testchuck.entities.ChuckNorrisJoke
+import com.kirmartyukl.domain.dto.ChuckNorrisJoke
+import com.kirmartyukl.domain.repository.JokesRepository
+import com.kirmartyukl.domain.repository.LoadResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import javax.inject.Inject
 
 /**
  * Simple repository for downloading awesome jokes about Chuck Norris
  * @author kirmartuk
  */
-class JokesRepository(
-    private val mJokesMutableLiveData: MutableLiveData<ArrayList<ChuckNorrisJoke>>
-) {
-
-    companion object {
-        const val BASE_URL = "http://api.icndb.com/"
-    }
+class JokesRepositoryImpl @Inject constructor(private val jokesApiService: JokesApiService) :
+    JokesRepository {
 
     /**
      * This method download jokes by count + track progress
      */
-    suspend fun loadChuckNorrisJokes(count: Int): Flow<LoadResult> {
+    override suspend fun loadChuckNorrisJokes(
+        count: Int,
+        mJokesMutableLiveData: MutableLiveData<ArrayList<ChuckNorrisJoke>>
+    ): Flow<LoadResult> {
         return flow {
             try {
                 emit(LoadResult.Loading)
-                val retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-
-                val jokesApiService = retrofit.create(JokesApiService::class.java)
                 mJokesMutableLiveData.postValue(jokesApiService.getFixedRandomJokes(count).value)
-
                 emit(LoadResult.Success)
             } catch (ioException: IOException) {
                 ioException.message?.let {
