@@ -1,4 +1,4 @@
-package com.kirmartyukl.data.entities
+package com.kirmartyukl.domain.dto
 
 
 data class ChuckNorrisJokeDTO(
